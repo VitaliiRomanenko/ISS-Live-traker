@@ -1,0 +1,39 @@
+.navbar{
+    padding: 0 30px;
+    background-color: RGBA(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 10;
+    backdrop-filter: blur(6px);
+}
+.mobileNavList{
+    padding: 20px;
+    list-style: none;
+}
+
+.navItem:hover{
+
+}
+
+
+.active::after{
+    content: "";
+    height: 3px;
+    bottom: 3px;
+    width: 100%;
+    right: 0;
+    display: block;
+    position: relative;
+    background: #ffffff;
+    animation: navHover 0.5s forwards;
+}
+
+@keyframes navHover {
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+    100%{
+        width: 100%;
+        opacity: 1;
+    }
+}
