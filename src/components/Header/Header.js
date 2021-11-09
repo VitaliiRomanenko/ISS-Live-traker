@@ -4,8 +4,20 @@ import styles from "./Header.module.css"
 import "../../index.css"
 import {Icon, Navbar, NavItem} from "react-materialize";
 const Header = () => {
-    let navLinks = ['HOME', "GALLERY", "CONTACT"]
-    let [activeLink, setActiveLink] = useState("HOME")
+    let navLinks = [
+        {
+            id: 0,
+            name: 'HOME'
+        },
+        {
+            id: 1,
+            name: "GALLERY"
+        },
+        {
+            id: 2,
+            name: "CONTACTS"
+        }]
+    let [activeLink, setActiveLink] = useState(0)
 
     return (
             <Navbar
@@ -27,20 +39,20 @@ const Header = () => {
                 sidenav={<ul className={styles.mobileNavList + " browser-default"}>
                     {navLinks.map(link => (
                     <li
-                        key={Date.now()+1}
+                        key={link.id}
                         style={{cursor: "pointer"}}
                     >
-                        {link}
+                        {link.name}
                     </li>))}
                 </ul>}
             >
                 {navLinks.map(link => (
                     <NavItem
-                        key={Date.now()}
-                        onClick={() => setActiveLink(link)}
-                        className={ activeLink === link ? styles.active:""}
+                        key={link.id}
+                        onClick={() => setActiveLink(link.id)}
+                        className={ activeLink === link.id ? styles.active:""}
                     >
-                        {link}
+                        {link.name}
                     </NavItem>
                 ))}
             </Navbar>
