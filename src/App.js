@@ -1,12 +1,12 @@
 import './App.css';
 import Header from "./components/Header/Header";
 import 'materialize-css';
-import WelcomeScreen from "./components/WelcomeScreen";
+import HomePage from "./Pages/HomePage/HomePage";
 function App() {
   return (
     <div className="App">
         <Header/>
-        <WelcomeScreen/>
+        <HomePage/>
     </div>
   );
 }

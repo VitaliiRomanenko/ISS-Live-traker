@@ -1,6 +1,6 @@
 import React from 'react';
 import {Carousel} from "react-materialize";
-import styles from "../WelcomeScreen.module.css";
+import styles from "../../Pages/HomePage/Screens/Welcome.module.css";
 import img1 from "../../assets/carusel_item/1.jpg";
 import img2 from "../../assets/carusel_item/2.jpg";
 import img3 from "../../assets/carusel_item/3.jpg";

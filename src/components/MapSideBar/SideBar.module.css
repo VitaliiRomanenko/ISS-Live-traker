@@ -1,0 +1,16 @@
+.sideBar{
+    position: absolute;
+    top: 100vh;
+    bottom: 0;
+    left: -100px;
+    width: 100px;
+    background-color: #fff;
+    z-index:10;
+    height: 100vh;
+    transition: 1s;
+}
+.visible{
+    left: 0;
+    /*display: block;*/
+    transition: 1s;
+}

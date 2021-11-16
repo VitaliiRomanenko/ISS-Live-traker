@@ -1,9 +1,15 @@
 import React from 'react';
-import styles from './WelcomeScreen.module.css'
-import bg from '../assets/iss065e168303_lrg.jpg'
+import styles from './Welcome.module.css'
+import bg from '../../../assets/iss065e168303_lrg.jpg'
 import {Button, Icon} from "react-materialize";
 
-const WelcomeScreen = () => {
+const Welcome = () => {
+    let scrollPage = () =>{
+        window.scroll({
+            top: window.innerHeight,
+            behavior: 'smooth'
+        })
+    }
     return (
             <div style={{backgroundImage: `url(${bg})`}} className={styles.bg_wrapper}>
                 <div className={styles.bg_obscuration}>
@@ -17,6 +23,7 @@ const WelcomeScreen = () => {
                                     marginTop:"10px"
 
                                 }}
+                                onClick={scrollPage}
                                 waves="light"
                                 className='right light-blue'
                             >
@@ -33,4 +40,4 @@ const WelcomeScreen = () => {
     );
 }
 
-export default WelcomeScreen;
+export default Welcome;
