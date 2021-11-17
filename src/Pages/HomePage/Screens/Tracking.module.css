@@ -3,6 +3,7 @@
     background: linear-gradient(0deg, rgba(0,0,0,1) 0%, #192F3D 100%);
     margin-bottom:  0;
     overflow: hidden;
+    position: relative;
 }
 .mapCol{
     position: relative;
@@ -11,25 +12,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
-.showSideBarBtn{
-    background: none;
-    border: none;
-    color: #ffffff;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: 0.1s;
-    transform: scale(1);
-    z-index: 0;
-}
-.showSideBarBtn:focus{
-     background: none;
-    transform: scale(0.9);
- }
+
+
 .mapWrapper{
     border: 2px solid #ffffff;
     border-radius: 5px;
-    width: 80%;
-    height: 80%;
+    width: 95%;
+    height: 95%;
     position: relative;
 }

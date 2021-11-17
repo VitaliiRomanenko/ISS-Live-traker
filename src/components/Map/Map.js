@@ -1,15 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import mapboxgl from 'mapbox-gl'
 import styles from './Map.module.css'
-const Map = ({styleLink, className}) => {
+let ISS_Marker
+const Map = ({styleLink, className, lng, lat, zoom}) => {
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-70.9);
-    const [lat, setLat] = useState(42.35);
-    const [zoom, setZoom] = useState(2);
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
     useEffect(() => {
-        console.log(process.env.REACT_APP_MAPBOX_TOKEN)
         if (map.current) return; // initialize map only once
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -17,8 +14,15 @@ const Map = ({styleLink, className}) => {
             center: [lng, lat],
             zoom: zoom
         });
+        let el = document.createElement('div')
+        el.classList = 'marker'
+        ISS_Marker = new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map.current);
     });
 
+    useEffect(()=>{
+        if(!ISS_Marker) return
+        ISS_Marker.setLngLat([lng, lat])
+    }, [lat, lng])
     return (
         <div className={styles.mapWrapper + " " + className}>
             <div ref={mapContainer} className={styles.mapContainer} />

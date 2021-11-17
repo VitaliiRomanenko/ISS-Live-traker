@@ -1,9 +1,9 @@
 .sideBar{
     position: absolute;
-    top: 100vh;
+    top: 0;
     bottom: 0;
-    left: -100px;
-    width: 100px;
+    left: -200px;
+    width: 200px;
     background-color: #fff;
     z-index:10;
     height: 100vh;
