@@ -1,3 +1,17 @@
+.wrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0, 0.5);
+    z-index: 9;
+    visibility: hidden;
+}
+.wrapperVisible{
+    visibility: visible;
+}
+
 .sideBar{
     position: absolute;
     top: 0;
@@ -7,10 +21,8 @@
     background-color: #fff;
     z-index:10;
     height: 100vh;
-    transition: 1s;
+    transition: left 1s;
 }
-.visible{
+.sideBarVisible{
     left: 0;
-    /*display: block;*/
-    transition: 1s;
 }
