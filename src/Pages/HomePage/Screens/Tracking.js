@@ -3,23 +3,21 @@ import styles from "./Tracking.module.css"
 import Map from "../../../components/Map/Map";
 import SideBar from "../../../components/Map/MapSideBar/SideBar";
 import PopUp from "../../../components/Map/PopUp/PopUp";
+import {useDispatch, useSelector} from "react-redux";
+import {getPosition} from "../../../redux/actions";
 
 const Tracking = () => {
     let [visible, setVisible] = useState(false)
-    const [pos, setPos] = useState({lng: -70, lat: 42})
+    const dispatch = useDispatch()
+    const pos = useSelector(state => state.position.coordinates)
 
     useEffect(()=>{
+        dispatch(getPosition())
         setInterval(() =>{
-            fetch('http://api.open-notify.org/iss-now.json')
-                .then(response => response.json())
-                .then(json => {
-                    setPos({
-                        lng: parseFloat(json.iss_position.longitude),
-                        lat: parseFloat(json.iss_position.latitude)
-                    })
-                })
-        }, 2000)
-    })
+            dispatch(getPosition())
+        }, 10000)
+    }, [])
+
     return (
         <div className={styles.bgWrapper+ " row"}>
 
