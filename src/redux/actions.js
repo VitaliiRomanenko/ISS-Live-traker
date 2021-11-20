@@ -1,4 +1,11 @@
-import {GET_POSITION} from "./types";
+import {GET_POSITION, SET_STYLE} from "./types";
+
+export function setStyle(style) {
+    return {
+        type: SET_STYLE,
+        payload: style
+    }
+}
 
 export function getPosition() {
     return async dispatch => {
