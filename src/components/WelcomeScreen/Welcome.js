@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Welcome.module.css'
-import bg from '../../../assets/iss065e168303_lrg.jpg'
+import bg from '../../assets/iss065e168303_lrg.jpg'
 import {Button, Icon} from "react-materialize";
 
 const Welcome = () => {
