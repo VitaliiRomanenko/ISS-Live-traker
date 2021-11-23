@@ -1,12 +1,12 @@
 import React from 'react';
-import Welcome from "./Screens/Welcome";
-import Tracking from "./Screens/Tracking";
+import Welcome from "../../components/WelcomeScreen/Welcome";
+import TrackingController from "../../controllers/TrackingController";
 
 const HomePage = () => {
     return (
         <div>
             <Welcome/>
-            <Tracking/>
+            <TrackingController/>
         </div>
     );
 };
