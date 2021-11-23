@@ -1,1 +1,2 @@
 export const GET_POSITION = 'POS/GET_POSITION'
+export const SET_STYLE = 'STYLE/SET_STYLE'
