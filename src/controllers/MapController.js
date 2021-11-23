@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {useSelector} from "react-redux";
-import mapboxgl from "mapbox-gl";
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import mapboxgl from "!mapbox-gl";
 import Map from "../components/Map/Map";
 let ISS_Marker
 let map
