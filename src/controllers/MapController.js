@@ -10,7 +10,7 @@ const MapController = () => {
     const mapContainer = useRef(null);
     map = useRef(null);
 
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    mapboxgl.accessToken = 'pk.eyJ1IjoiNGFybHoiLCJhIjoiY2t3MjRtdmVxMDZyNjMxcWx3cnV1YXBtYSJ9.uJuE4tc00w4jbiXIZIiltQ';
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
