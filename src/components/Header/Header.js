@@ -1,23 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import 'materialize-css';
 import styles from "./Header.module.css"
 import "../../index.css"
-import {Icon, Navbar, NavItem} from "react-materialize";
+import {Icon, Navbar} from "react-materialize";
+import {NavLink} from "react-router-dom";
+import {routs} from "../../routs";
 const Header = () => {
-    let navLinks = [
-        {
-            id: 0,
-            name: 'HOME'
-        },
-        {
-            id: 1,
-            name: "GALLERY"
-        },
-        {
-            id: 2,
-            name: "CONTACTS"
-        }]
-    let [activeLink, setActiveLink] = useState(0)
 
     return (
             <Navbar
@@ -36,25 +24,28 @@ const Header = () => {
                     outDuration: 200,
                     preventScrolling: true
                 }}
-                sidenav={<ul className={styles.mobileNavList + " browser-default"}>
-                    {navLinks.map(link => (
-                    <li
-                        key={link.id}
-                        style={{cursor: "pointer"}}
-                    >
-                        {link.name}
-                    </li>))}
-                </ul>}
+                style={{textTransform:"uppercase"}}
+                sidenav={
+                    <ul className={styles.mobileNavList + " browser-default"}>
+                        {routs.map(link => (
+                            <li
+                                key={link.path}
+                            >
+                                <NavLink
+                                    to={link.path}
+                                    style={{cursor: "pointer", textTransform:"uppercase", color:"#fff"}}
+                                    activeClassName={styles.active}
+                                >
+                                    {link.name}
+                                </NavLink>
+                        </li>))}
+                    </ul>}
             >
-                {navLinks.map(link => (
-                    <NavItem
-                        key={link.id}
-                        onClick={() => setActiveLink(link.id)}
-                        className={ activeLink === link.id ? styles.active:""}
-                    >
-                        {link.name}
-                    </NavItem>
-                ))}
+                {routs.map(link => (
+                        <NavLink  key={link.path} to={link.path} activeClassName={styles.active}>
+                            {link.name}
+                        </NavLink>))
+                }
             </Navbar>
     );
 }

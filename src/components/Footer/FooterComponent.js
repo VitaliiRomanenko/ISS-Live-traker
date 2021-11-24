@@ -1,5 +1,7 @@
 import React from 'react';
 import {Footer} from "react-materialize";
+import {NavLink} from "react-router-dom";
+import {CONTACT_PAGE} from "../../utils/routsPath";
 
 const FooterComponent = () => {
     return (
@@ -24,18 +26,18 @@ const FooterComponent = () => {
                     <span> Instagram</span>
                 </a></li>
                 <li><a className="grey-text text-lighten-3" href="https://github.com/VitaliiRomanenko/ISS-Live-traker">
-                    <i className="fab fa-github"></i>
+                    <i className="fab fa-github"/>
                     <span> GitHub</span>
                 </a></li>
             </ul>}
-            moreLinks={<a className="grey-text text-lighten-4 right" href="#!"> <i className="far fa-envelope"/><span> Contact me</span></a>}
+            moreLinks={<NavLink to={CONTACT_PAGE} className="grey-text text-lighten-4 right"> <i className="far fa-envelope"/><span> Contact me</span></NavLink>}
             style={{borderTop:"1px solid white"}}
         >
             <h5 className="white-text" style={{textTransform: "uppercase"}}>
                 ISS live tracker
             </h5>
             <p className="grey-text text-lighten-4">
-                If you have any question, you can find me in social media, or send me email on <a href="#">contact page</a>.
+                If you have any question, you can find me in social media, or send me email on <NavLink to={CONTACT_PAGE}>contact page</NavLink>.
             </p>
         </Footer>
     );

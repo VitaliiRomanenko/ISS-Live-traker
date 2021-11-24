@@ -1,14 +1,17 @@
 import './App.css';
 import Header from "./components/Header/Header";
 import 'materialize-css';
-import HomePage from "./Pages/HomePage/HomePage";
 import FooterComponent from "./components/Footer/FooterComponent";
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./components/AppRouter";
 function App() {
   return (
     <div className="App">
-        <Header/>
-        <HomePage/>
-        <FooterComponent/>
+        <BrowserRouter>
+            <Header/>
+            <AppRouter/>
+            <FooterComponent/>
+        </BrowserRouter>
     </div>
   );
 }
