@@ -1,6 +1,7 @@
 import {GET_POSITION, SET_STYLE} from "./types";
 
 export function setStyle(style) {
+    localStorage.setItem('activeStyle', JSON.stringify(style))
     return {
         type: SET_STYLE,
         payload: style
