@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
+import GalleryControler from "../../controllers/GalleryController";
 
 const GalleryPage = () => {
     return (
         <div>
-            <h1 style={{margin: 0, paddingTop: "100px", display: "block", height: "65vh"}}>Gallery page is coming soon</h1>
+           <GalleryControler/> 
 
         </div>
     );
