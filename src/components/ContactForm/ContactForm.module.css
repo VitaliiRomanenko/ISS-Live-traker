@@ -1,0 +1,26 @@
+.formBody{
+    width: 400px;
+    border: 2px solid#03a9f4;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    box-sizing: border-box;
+    /* box-shadow: inset -1px -1px 20px #000; */
+}
+
+.formBody textarea{
+    min-height: 100px;
+    color: #fff;
+}
+
+.formBody input{
+    color: #fff;
+}
+@media (max-width: 600px) {
+    .formBody{
+        border: none;
+        background-color: transparent;
+    }
+
+}
