@@ -1,5 +1,6 @@
 const express = require("express")
 const sendMail = require("./emailManager.js")
+const getPeopleInSpace = require("./wikiManager")
 const path = require('path')
 const bodyParser = require('body-parser')
 
@@ -21,8 +22,13 @@ app.post("/feedback", (req, res) => {
         res.sendStatus(status)
     })
 })
+app.get("/getpeopleinspace", (req, res) => {
+    getPeopleInSpace((data) => {
+        res.json(data)
+    })
 
-app.get("*", (req, res) => {
+})
+app.get("/", (req, res) => {
     res.sendFile('index.html', {root});
 })
 
