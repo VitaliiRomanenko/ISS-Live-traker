@@ -62,7 +62,8 @@ function getAstronautsData(callback) {
                     new Promise((resolve, reject) => {
                         getWikiData(person.name, (data) => {
                             if (data) {
-                                resolve({name: person.name, info: data.extract, img: data.thumbnail.source})
+                                let bigImg = data.thumbnail.source.replace(/\.jpg\/.*px/, ".jpg/400px").replace(/\.JPG\/.*px/, ".JPG/400px")
+                                resolve({name: person.name, info: data.extract, img: bigImg})
                             } else {
                                 reject(new Error("Wiki data can not be Null"))
                             }
