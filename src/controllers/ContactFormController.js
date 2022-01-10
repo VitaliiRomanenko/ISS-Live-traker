@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import ContactForm from '../components/ContactForm/ContactForm';
+import {sendEmail} from "../http/emailAPI";
 
 const ContactFormController = () => {
     const [status, setStatus] = useState('waiting')
 
     async function sendMessage (email, text) {
         setStatus("sending")
-        let responce = await fetch('/feedback', {
-            method: 'POST',
-            body: JSON.stringify({ email, text }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        responce.ok ? setStatus("OK") : setStatus("Error")
+        let responce = await sendEmail({email, text})
+        responce === 200 ? setStatus("OK") : setStatus("Error")
 
         setTimeout(()=>{
             setStatus("waiting")

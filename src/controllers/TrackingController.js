@@ -11,7 +11,7 @@ const TrackingController = () => {
         setInterval(() =>{
             dispatch(getPosition())
         }, 10000)
-    }, [])
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
     return <TrackingScreen/>
 };

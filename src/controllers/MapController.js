@@ -27,7 +27,7 @@ const MapController = () => {
         let el = document.createElement('div')
         el.classList = 'marker'
         ISS_Marker = new mapboxgl.Marker(el).setLngLat([pos.lng, pos.lat]).addTo(map.current);
-    }, []);
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(()=>{
         if(!map.current) return
@@ -38,7 +38,7 @@ const MapController = () => {
         if(!ISS_Marker) return
         ISS_Marker.setLngLat([pos.lng, pos.lat])
         if(follow) map.current.setCenter([pos.lng, pos.lat])
-    }, [pos])
+    }, [pos])// eslint-disable-line react-hooks/exhaustive-deps
 
     return <Map mapContainer={mapContainer}/>
 };
