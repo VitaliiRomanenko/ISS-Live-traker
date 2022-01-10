@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 
-const  sendMail = (email, text, res) => {
+ async function sendMail  (email, text) {
     let status;
     const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -11,7 +11,7 @@ const  sendMail = (email, text, res) => {
     })
 
     const mailOptions = {
-        from: `ISS live tracker <${process.env.EMAIL}>` ,
+        from: `ISS live tracker <${process.env.EMAIL}>`,
         to: "iss.live.tracker@gmail.com",
         subject: "Have new feedback message",
         html: `<!DOCTYPE html>
@@ -128,7 +128,7 @@ const  sendMail = (email, text, res) => {
         <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;">
         <!--<![endif]-->
         <tr>
-        <td style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;color:#9d9d9d;vertical-align:middle;letter-spacing:undefined;text-align:center;"><a href="https://www.designedwithbee.com/" style="color:#9d9d9d;text-decoration:none;">Designed with BEE</a></td>
+        <td style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;color:#9d9d9d;vertical-align:middle;text-align:center;"><a href="https://www.designedwithbee.com/" style="color:#9d9d9d;text-decoration:none;">Designed with BEE</a></td>
         </tr>
         </table>
         </td>
@@ -153,13 +153,14 @@ const  sendMail = (email, text, res) => {
         </html>`
     }
 
-    transporter.sendMail(mailOptions, (err, info) => {
+    await transporter.sendMail(mailOptions, (err) => {
         if (err) {
-            res.sendStatus(500)
+            console.error(err)
+            status = 500
         }
-        res.sendStatus(200)
-        
     })
+     status = 200
+     return status
 }
 
 module.exports = sendMail

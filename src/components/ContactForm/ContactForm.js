@@ -19,11 +19,11 @@ const ContactForm = ({ onSubmit, status }) => {
                     <div className="preloader-wrapper small active right">
                         <div className="spinner-layer spinner-blue-only">
                             <div className="circle-clipper left">
-                                <div className="circle"></div>
+                                <div className="circle"/>
                             </div><div className="gap-patch">
-                                <div className="circle"></div>
+                                <div className="circle"/>
                             </div><div className="circle-clipper right">
-                                <div className="circle"></div>
+                                <div className="circle"/>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ const ContactForm = ({ onSubmit, status }) => {
 
             <div className="input-field">
                 <input id="email" type="email" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <label htmlFor="email" autocomplete="on">Email</label>
+                <label htmlFor="email" autoComplete="on">Email</label>
             </div>
 
             <div className="input-field">
@@ -60,7 +60,7 @@ const ContactForm = ({ onSubmit, status }) => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     required
-                ></textarea>
+                />
                 <label htmlFor="textarea1">Share your opinion</label>
             </div>
             <div className='row'>

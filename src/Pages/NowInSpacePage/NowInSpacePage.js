@@ -1,12 +1,9 @@
 import React from 'react';
+import AstronautsController from "../../controllers/AstronautsController";
 
 const NowInSpacePage = () => {
-    return (
-        <div>
-            <h1 style={{margin: 0, paddingTop: "100px", display: "block", height: "65vh"}}>Now in space page is coming soon</h1>
 
-        </div>
-    );
+    return <AstronautsController />
 };
 
 export default NowInSpacePage;
