@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from "./spot.module.css"
+import SpotCard from "../../components/SpotCard/SpotCard";
 
 const SpotPage = () => {
-  return (
-    <div>
-      <h1 style={{margin: 0, paddingTop: "100px", display: "block", height: "65vh"}}>Spot the station page is coming
-        soon</h1>
 
+  return (
+    <div className={styles.wrapper}>
+      <SpotCard/>
     </div>
   );
 };
