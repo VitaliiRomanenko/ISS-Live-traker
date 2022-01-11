@@ -3,6 +3,6 @@ const astronautController = require('../controllers/astronautController')
 
 const router = new Router()
 
-router.get('/',  astronautController.getAstronauts)
+router.get('/', astronautController.getAstronauts)
 
 module.exports = router

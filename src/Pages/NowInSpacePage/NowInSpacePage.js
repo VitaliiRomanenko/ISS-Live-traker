@@ -3,7 +3,7 @@ import AstronautsController from "../../controllers/AstronautsController";
 
 const NowInSpacePage = () => {
 
-    return <AstronautsController />
+  return <AstronautsController/>
 };
 
 export default NowInSpacePage;

@@ -17,10 +17,10 @@ app.use(bodyParser.json())
 app.use('/api', router)
 
 app.get("/*", (req, res) => {
-    res.sendFile('index.html', {root});
+  res.sendFile('index.html', {root});
 })
 
 
-app.listen(PORT, ()=>{
-    console.log("Server started on PORT: " + PORT)
+app.listen(PORT, () => {
+  console.log("Server started on PORT: " + PORT)
 })

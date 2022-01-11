@@ -1,87 +1,31 @@
-const getUrlString = (searchTerm) => {
-    const rawURL = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${searchTerm}&gsrlimit=1&prop=pageimages|extracts&&exintro&explaintext&exlimit=max&format=json&origin=*`
-    return encodeURI(rawURL)
+const axios = require("axios");
+
+const WIKI_URL = "https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrlimit=1&prop=pageimages|extracts&&exintro&explaintext&exlimit=max&format=json&origin=*&gsrsearch="
+const ASTRONAUTS_URL = "http://api.open-notify.org/astros.json"
+
+async function fetchData(url) {
+  let {data} = await axios.create().get(url)
+  return data
 }
 
-function getData(url, protocol, callback) {
-    require(protocol).get(url, (res) => {
-        const {statusCode} = res;
-        const contentType = res.headers['content-type'];
+async function fetchAstronautsInfo(astronaut) {
+  let data = await fetchData(encodeURI(WIKI_URL + astronaut))
+  let astronautInfo =  data.query.pages[Object.keys(data.query.pages)[0]]
+  let bigImg = astronautInfo.thumbnail.source
+    .replace(/\.jpg\/.*px/, ".jpg/400px")
+    .replace(/\.JPG\/.*px/, ".JPG/400px")
 
-        let error;
-
-        if (statusCode !== 200) {
-            error = new Error('Request Failed.\n' +
-                `Status Code: ${statusCode}`);
-        } else if (!/^application\/json/.test(contentType)) {
-            error = new Error('Invalid content-type.\n' +
-                `Expected application/json but received ${contentType}`);
-        }
-        if (error) {
-            console.error(error.message);
-            // Consume response data to free up memory
-            res.resume();
-            return;
-        }
-
-        res.setEncoding('utf8');
-        let rawData = '';
-        res.on('data', (chunk) => {
-            rawData += chunk;
-        });
-        res.on('end', () => {
-            try {
-                const parsedData = JSON.parse(rawData);
-
-                callback(parsedData);
-            } catch (e) {
-                console.error(e.message);
-            }
-        });
-    }).on('error', (e) => {
-        console.error(`Got error: ${e.message}`);
-    });
-
+  return({name: astronaut.name, info: astronautInfo.extract, img: bigImg})
 }
 
-function getWikiData(searhTerm, callback) {
-
-    getData(getUrlString(searhTerm), "https", (data) => {
-        if (data){
-            callback(data.query.pages[Object.keys(data.query.pages)[0]])
-        } else{
-            callback(null)
-        }
-
+async function getPeopleInSpace() {
+  return await fetchData(ASTRONAUTS_URL).then(astronautsList => {
+    return astronautsList.people.map(astronaut => {
+      return fetchAstronautsInfo(astronaut.name)
     })
-}
-
-function getAstronautsData(callback) {
-    getData('http://api.open-notify.org/astros.json', "http", (data) => {
-        callback(data.people.map((person =>
-                    new Promise((resolve, reject) => {
-                        getWikiData(person.name, (data) => {
-                            if (data) {
-                                let bigImg = data.thumbnail.source.replace(/\.jpg\/.*px/, ".jpg/400px").replace(/\.JPG\/.*px/, ".JPG/400px")
-                                resolve({name: person.name, info: data.extract, img: bigImg})
-                            } else {
-                                reject(new Error("Wiki data can not be Null"))
-                            }
-                        })
-                    }).catch(console.error)
-            ))
-        )
-    })
-
-
-}
-
-function getPeopleInSpace(callback) {
-    getAstronautsData(promises => {
-        Promise.all(promises).then(data => callback(data)).catch(console.error)
-    })
-
-
+  }).then(list => {
+    return Promise.all(list).catch(console.error)
+  })
 }
 
 module.exports = getPeopleInSpace
