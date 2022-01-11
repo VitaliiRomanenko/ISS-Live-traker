@@ -2,12 +2,12 @@ import React from 'react'
 import GalleryControler from "../../controllers/GalleryController";
 
 const GalleryPage = () => {
-    return (
-        <div>
-           <GalleryControler/> 
+  return (
+    <div>
+      <GalleryControler/>
 
-        </div>
-    );
+    </div>
+  );
 };
 
 export default GalleryPage;

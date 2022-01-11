@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import Header from "./Header";
 
 
-describe("NavBar testing", ()=>{
+describe("NavBar testing", () => {
   let links = [
     {
       id: 0,
@@ -17,12 +17,12 @@ describe("NavBar testing", ()=>{
       name: "CONTACTS"
     }]
   test.each(links)('NavLink is exists', (links) => {
-    render(<Header />);
+    render(<Header/>);
     const linkElement = screen.getAllByText(links.name);
     expect(linkElement).toHaveLength(2)
   });
-  test('HOME is active', ()=>{
-    render(<Header />);
+  test('HOME is active', () => {
+    render(<Header/>);
     const linkElement = screen.getAllByText("HOME")[0];
     expect(linkElement).toHaveAttribute("class", "active")
   })

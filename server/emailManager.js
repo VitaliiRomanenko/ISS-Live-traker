@@ -1,20 +1,20 @@
 const nodemailer = require('nodemailer')
 
- async function sendMail  (email, text) {
-    let status;
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: 'iss.live.tracker@gmail.com',
-            pass: 'ljnpagajrryzpsvt'
-        }
-    })
+async function sendMail(email, text) {
+  let status;
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: 'iss.live.tracker@gmail.com',
+      pass: 'ljnpagajrryzpsvt'
+    }
+  })
 
-    const mailOptions = {
-        from: `ISS live tracker <${process.env.EMAIL}>`,
-        to: "iss.live.tracker@gmail.com",
-        subject: "Have new feedback message",
-        html: `<!DOCTYPE html>
+  const mailOptions = {
+    from: `ISS live tracker <${process.env.EMAIL}>`,
+    to: "iss.live.tracker@gmail.com",
+    subject: "Have new feedback message",
+    html: `<!DOCTYPE html>
 
         <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
         <head>
@@ -151,16 +151,16 @@ const nodemailer = require('nodemailer')
         </table><!-- End -->
         </body>
         </html>`
-    }
+  }
 
-    await transporter.sendMail(mailOptions, (err) => {
-        if (err) {
-            console.error(err)
-            status = 500
-        }
-    })
-     status = 200
-     return status
+  await transporter.sendMail(mailOptions, (err) => {
+    if (err) {
+      console.error(err)
+      status = 500
+    }
+  })
+  status = 200
+  return status
 }
 
 module.exports = sendMail

@@ -11,13 +11,13 @@ import thunk from "redux-thunk";
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const app = (
-    <Provider store={store}>
-        <App />
-    </Provider>
+  <Provider store={store}>
+    <App/>
+  </Provider>
 )
 ReactDOM.render(
   <React.StrictMode>
-      {app}
+    {app}
   </React.StrictMode>,
   document.getElementById('root')
 );
