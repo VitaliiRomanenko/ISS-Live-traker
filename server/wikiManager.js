@@ -15,7 +15,7 @@ async function fetchAstronautsInfo(astronaut) {
     .replace(/\.jpg\/.*px/, ".jpg/400px")
     .replace(/\.JPG\/.*px/, ".JPG/400px")
 
-  return({name: astronaut.name, info: astronautInfo.extract, img: bigImg})
+  return({name: astronaut, info: astronautInfo.extract, img: bigImg})
 }
 
 async function getPeopleInSpace() {
