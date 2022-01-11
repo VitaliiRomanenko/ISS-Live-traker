@@ -1,4 +1,5 @@
 import {GET_POSITION, SET_STYLE} from "./types";
+import {fetchPosition} from "../http/positionAPI";
 
 export function setStyle(style) {
   localStorage.setItem('activeStyle', JSON.stringify(style))
@@ -11,12 +12,11 @@ export function setStyle(style) {
 export function getPosition() {
   return async dispatch => {
     try {
-      const response = await fetch('http://api.open-notify.org/iss-now.json')
-      const json = await response.json()
+      const position = await fetchPosition()
       dispatch({
         type: GET_POSITION, payload: {
-          lng: parseFloat(json.iss_position.longitude),
-          lat: parseFloat(json.iss_position.latitude)
+          lng: parseFloat(position.iss_position.longitude),
+          lat: parseFloat(position.iss_position.latitude)
         }
       })
     } catch (e) {
