@@ -2,9 +2,8 @@ const getPeopleInSpace = require("../wikiManager");
 
 class astronautController {
   async getAstronauts(req, res) {
-    getPeopleInSpace(data => {
-      res.json(data)
-    })
+    let data = await getPeopleInSpace()
+    res.json(data)
   }
 
 }
