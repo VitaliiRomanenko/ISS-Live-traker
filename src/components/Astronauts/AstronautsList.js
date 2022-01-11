@@ -1,17 +1,16 @@
 import React from 'react';
 import AstronautCard from "./AstronautCard";
 import contactBG from "../../assets/contactBG.jpg"
+import styles from "./AstronautsList.module.css"
 
 const AstronautsList = ({astronauts}) => {
   return (
-    <div style={{
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "space-between",
-      paddingTop: 100,
-      backgroundImage: `url(${contactBG})`,
-      backgroundSize: "cover"
-    }}>
+    <div
+      style={{
+        backgroundImage: `url(${contactBG})`,
+      }}
+      className={styles.list}
+    >
       {astronauts.map((astronaut, index) => <AstronautCard astronaut={astronaut} key={index}/>)}
     </div>
   );
